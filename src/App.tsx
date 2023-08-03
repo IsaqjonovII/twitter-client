@@ -1,16 +1,25 @@
-import { Routes, Route } from 'react-router-dom';
-import routes from './routes';
-
+import Sidebar from "./components/Sidebar";
+import { GlobalStyles } from "./styles";
+import StyledHome from "./pages/Home/style";
+import { Routes, Route } from "react-router-dom";
+import routes from "./routes";
 
 function App() {
-
   return (
     <div>
-      <Routes>
-        {routes.map(({ key, path, Component }) => <Route key={key} path={path} element={<Component />} />)}
-      </Routes>
+      <GlobalStyles />
+      <StyledHome>
+        <Sidebar />
+        <div className="feed">
+          <Routes>
+            {routes.map(({ key, path, Component }) => (
+              <Route key={key} path={path} element={<Component />} />
+            ))}
+          </Routes>
+        </div>
+      </StyledHome>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

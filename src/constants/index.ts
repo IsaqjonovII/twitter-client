@@ -7,6 +7,16 @@ const APP_ROUTES = {
   SEARCH: "/search",
   SETTINGS: "/settings",
 };
+
+export enum colors {
+  white = "#fff",
+  blue = "#1DA1F2",
+  blue1 = "#17202A",
+  gray = "#8899A6",
+  red = "#F4245E",
+  gray1 = "#283340",
+}
+
 export const {
   HOME,
   PROFILE,

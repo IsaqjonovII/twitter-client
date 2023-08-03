@@ -23,4 +23,22 @@ const routes: IAppRoutes[] = [
   },
 ];
 
+export const sidebarRoutes: ISidebarRoutes[] = [
+  {
+    key: 0,
+    path: HOME,
+    title: "Home",
+  },
+  {
+    key: 1,
+    path: NOTIFICATIONS,
+    title: "Notifications",
+  },
+  {
+    key: 2,
+    path: PROFILE,
+    title: "Profile",
+  },
+];
+
 export default routes;
