@@ -1,4 +1,5 @@
 import { HOME, NOTIFICATIONS, PROFILE, SETTINGS } from "../constants";
+import { IAppRoutes, ISidebarRoutes } from "../interfaces";
 import Home from "../pages/Home";
 import Profile from "../pages/User/Profile";
 
