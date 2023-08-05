@@ -1,13 +1,15 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import { twitterLogo } from "../../assets";
 import { sidebarRoutes } from "../../routes";
-import Wrapper from "../Wrapper";
+import Wrapper from "../../components/Wrapper";
 import StyledSidebar from "./style";
 
-interface ISidebarProps {
+interface ISidebar {
   children: React.JSX.Element | React.JSX.Element[] | any;
 }
-const Sidebar = ({ children }: ISidebarProps) => {
+
+const Sidebar = ({ children }: ISidebar) => {
   return (
     <StyledSidebar>
       <div className="sidebar">

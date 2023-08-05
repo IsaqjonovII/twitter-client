@@ -1,6 +1,6 @@
-import { HOME, NOTIFICATIONS, PROFILE, SETTINGS } from "../constants";
+import { HOME, NOTIFICATIONS, PROFILE, SETTINGS, TWEET } from "../constants";
 import { IAppRoutes, ISidebarRoutes } from "../interfaces";
-import Home from "../pages/Home";
+import Notifications from "../pages/Notifications";
 import Profile from "../pages/User/Profile";
 import {
   RiHome7Fill,
@@ -10,7 +10,8 @@ import {
   FaRegUser,
   FaUser,
 } from "../assets";
-import Notifications from "../pages/Notifications";
+import TWeetInfo from "../pages/Home/Tweet";
+import Home from "../pages/Home";
 
 const routes: IAppRoutes[] = [
   {
@@ -31,6 +32,11 @@ const routes: IAppRoutes[] = [
   {
     key: 3,
     path: SETTINGS,
+  },
+  {
+    key: 4,
+    path: TWEET,
+    Component: TWeetInfo,
   },
 ];
 
