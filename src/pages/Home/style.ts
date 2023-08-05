@@ -11,14 +11,6 @@ export default styled.div`
   color: ${white};
   border-right: 0.06rem solid ${gray1};
 
-  .home__title {
-    display: block;
-    padding: 1rem 0.5rem;
-    font-size: 1.1875rem;
-    font-weight: 700;
-    line-height: normal;
-  }
-
   .tweet__wrp {
     width: 100%;
     height: auto;
@@ -52,7 +44,7 @@ export default styled.div`
 
     .feed__tweet__wrp {
       padding: 0.5rem 1rem;
-    border-bottom: 0.06rem solid ${gray1};
+      border-bottom: 0.06rem solid ${gray1};
 
       .tweet__content {
         padding: 1rem;
@@ -65,9 +57,9 @@ export default styled.div`
           max-width: 5rem;
           cursor: pointer;
           span {
-            font-size: .9rem;
+            font-size: 0.9rem;
             display: inline-block;
-            margin-left: .625rem;
+            margin-left: 0.625rem;
           }
           .heart__icon {
             color: ${red};

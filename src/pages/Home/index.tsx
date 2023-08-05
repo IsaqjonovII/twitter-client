@@ -4,11 +4,12 @@ import StyledHome from "./style";
 import { tweets } from "../../mocks";
 import { Link } from "react-router-dom";
 import { AiOutlineHeart, commentIcon } from "../../assets";
+import PageTitle from "../../components/Title";
 
 const Home = () => {
   return (
     <StyledHome>
-      <h1 className="home__title">Home</h1>
+      <PageTitle>Home</PageTitle>
       <Wrapper className="tweet__wrp">
         <Wrapper className="tweet__inp">
           <Textarea
@@ -25,7 +26,11 @@ const Home = () => {
           <Wrapper className="feed__tweet__wrp">
             <Link to={"/status/" + id}>
               <Wrapper flex="flex" align="center">
-                <Avatar name="Dan Abrahmov" size="md" src="https://bit.ly/dan-abramov" />
+                <Avatar
+                  name="Dan Abrahmov"
+                  size="md"
+                  src="https://bit.ly/dan-abramov"
+                />
                 <Wrapper className="tweet__content">{content}</Wrapper>
               </Wrapper>
             </Link>

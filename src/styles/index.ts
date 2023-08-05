@@ -26,7 +26,7 @@ export const GlobalStyles = createGlobalStyle`
     color: ${white};
     position: relative;
   }
-  --webkit-scrollbar {
+  ::-webkit-scrollbar {
     display: none;
   }
 `;

@@ -7,6 +7,8 @@ export interface ISidebarRoutes {
   path: string;
   key: string | number;
   title: string;
+  Icon?: JSX.Element | any;
+  isActiveIcon?: JSX.Element | any;
 }
 export interface IUser {
   userId: string | number;

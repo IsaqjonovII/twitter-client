@@ -1,8 +1,11 @@
+import PageTitle from "../../components/Title"
 
 
 const Notifications = () => {
   return (
-    <div>Notifications</div>
+    <div>
+      <PageTitle>Notifications</PageTitle>
+    </div>
   )
 }
 

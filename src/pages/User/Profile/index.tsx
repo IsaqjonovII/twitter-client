@@ -1,8 +1,11 @@
+import PageTitle from "../../../components/Title"
 
 
 const Profile = () => {
   return (
-    <div>Profile</div>
+    <div>
+      <PageTitle>Profile</PageTitle>
+    </div>
   )
 }
 

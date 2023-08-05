@@ -17,14 +17,17 @@ const Sidebar = ({ children }: ISidebarProps) => {
           </Link>
         </Wrapper>
         <Wrapper className="sidebar__links">
-          {sidebarRoutes.map(({ key, path, title }) => (
-            <Wrapper key={key}>
-              <Link to={path}>{title}</Link>
-            </Wrapper>
+          {sidebarRoutes.map(({ key, path, title, Icon }) => (
+            <Link to={path} key={key}>
+              <Wrapper className="sidebar__link" flex="flex" align="center">
+                <Icon className="icon" />
+                <span>{title}</span>
+              </Wrapper>
+            </Link>
           ))}
         </Wrapper>
       </div>
-      <Wrapper>{children}</Wrapper>
+      <Wrapper className="routes__container">{children}</Wrapper>
     </StyledSidebar>
   );
 };
