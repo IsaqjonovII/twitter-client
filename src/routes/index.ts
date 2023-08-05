@@ -35,7 +35,7 @@ const routes: IAppRoutes[] = [
   },
   {
     key: 4,
-    path: TWEET,
+    path: TWEET + ":id",
     Component: TWeetInfo,
   },
 ];
