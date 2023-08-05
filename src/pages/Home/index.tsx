@@ -23,7 +23,7 @@ const Home = () => {
       </Wrapper>
       <Wrapper className="tweets__wrp" direction="column">
         {tweets.map(({ id, content, likes: { count } }) => (
-          <Wrapper className="feed__tweet__wrp">
+          <Wrapper className="feed__tweet__wrp" key={id}>
             <Link to={"/status/" + id}>
               <Wrapper flex="flex" align="center">
                 <Avatar

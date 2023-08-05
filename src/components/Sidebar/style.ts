@@ -3,7 +3,8 @@ import { colors } from "../../constants";
 
 const { blue, gray1 } = colors;
 export default styled.div`
-  display: flex;
+display: flex;
+padding: 0 2rem;
   .sidebar {
     width: 100%;
     max-width: 17.1rem;
