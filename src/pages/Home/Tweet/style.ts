@@ -15,13 +15,12 @@ export default styled.div`
   .replies__wrp {
     padding: 1rem;
   }
-  .tweet__content, 
-  .tweet__date, 
-  .tweet__actions__wrp, 
-  .reply__wrp, 
+  .tweet__content,
+  .tweet__date,
+  .tweet__actions__wrp,
+  .reply__wrp,
   .reply__inp {
     border-bottom: 0.03rem solid ${gray1};
-
   }
   .tweet__content {
     font-size: 1.25rem;
@@ -69,11 +68,16 @@ export default styled.div`
   }
   .like__count {
     font-size: 1rem;
-    margin-left: .4rem;
+    margin-left: 0.4rem;
   }
-    .reply__likes {
-      max-width: 4rem;
-      cursor: pointer;
-    }
- }
+  .reply__likes {
+    max-width: 4rem;
+    cursor: pointer;
+  }
+  .tweet__btn {
+    padding: 0.5rem 1rem;
+    background: ${blue};
+    margin: .5rem 0;
+    border-radius: 1rem;
+  }
 `;

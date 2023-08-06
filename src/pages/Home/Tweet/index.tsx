@@ -70,7 +70,14 @@ const TWeetInfo = () => {
           </Wrapper>
         </Wrapper>
         <Wrapper className="reply__inp">
-          <Textarea border="none" placeholder="Tweet your reply" resize="none" />
+          <Textarea
+            border="none"
+            placeholder="Tweet your reply"
+            resize="none"
+          />
+          <button className="tweet__btn" disabled={true}>
+            Tweet
+          </button>
         </Wrapper>
         <Wrapper className="replies">
           {currentTweet?.comments.commentsData.map(
