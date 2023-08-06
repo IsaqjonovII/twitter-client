@@ -62,6 +62,7 @@ export const tweets: ITweet[] = Array.from({ length: 10 }, (_, index) => ({
           new Date(2023, 0, 1),
           new Date()
         ).toLocaleDateString(),
+        commentLikes: Math.floor(Math.random() * 20),
       },
     ],
   },

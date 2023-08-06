@@ -32,6 +32,7 @@ export interface ITweet {
       commentId: string | number;
       commentContent: string;
       commentDate: string | Date;
+      commentLikes: number;
     }[];
   };
 }

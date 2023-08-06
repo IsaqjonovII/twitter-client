@@ -15,26 +15,31 @@ export default styled.div`
   .replies__wrp {
     padding: 1rem;
   }
+  .tweet__content, 
+  .tweet__date, 
+  .tweet__actions__wrp, 
+  .reply__wrp, 
+  .reply__inp {
+    border-bottom: 0.03rem solid ${gray1};
+
+  }
   .tweet__content {
     font-size: 1.25rem;
     padding: 0.5rem 0;
     margin: 0 0 0.5rem 0;
-    border-bottom: 0.03rem solid ${gray1};
   }
   .tweet__date {
     color: ${gray};
-    border-bottom: 0.03rem solid ${gray1};
     padding: 0.5rem 0;
     font-size: 0 0 0.9rem 0;
   }
   .tweet__actions__wrp {
-    border-bottom: 0.03rem solid ${gray1};
-    margin: .3rem 0;
-    padding: 0 0 .3rem 0;
+    margin: 0.3rem 0;
+    padding: 0 0 0.3rem 0;
     justify-content: center;
     span {
       color: ${gray};
-      font-size: .9rem;
+      font-size: 0.9rem;
     }
   }
   .action__wrp {
@@ -59,4 +64,16 @@ export default styled.div`
   .heart__icon {
     color: ${gray};
   }
+  .reply__wrp {
+    padding: 0.5rem 0;
+  }
+  .like__count {
+    font-size: 1rem;
+    margin-left: .4rem;
+  }
+    .reply__likes {
+      max-width: 4rem;
+      cursor: pointer;
+    }
+ }
 `;

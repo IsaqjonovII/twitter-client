@@ -5,7 +5,7 @@ import StyledTweet from "./style";
 import Wrapper from "../../../components/Wrapper";
 import { tweets } from "../../../mocks";
 import { ITweet } from "../../../interfaces";
-import { Avatar } from "@chakra-ui/react";
+import { Avatar, Textarea } from "@chakra-ui/react";
 import { AiOutlineHeart, commentIcon } from "../../../assets";
 
 type paramsID = {
@@ -68,6 +68,27 @@ const TWeetInfo = () => {
           >
             <AiOutlineHeart className="heart__icon" />
           </Wrapper>
+        </Wrapper>
+        <Wrapper className="reply__inp">
+          <Textarea border="none" placeholder="Tweet your reply" resize="none" />
+        </Wrapper>
+        <Wrapper className="replies">
+          {currentTweet?.comments.commentsData.map(
+            ({ commentId, commentContent, commentLikes }) => (
+              <Wrapper key={commentId} flex="flex" className="reply__wrp">
+                <Wrapper className="reply">{commentContent}</Wrapper>
+                <Wrapper
+                  flex="flex"
+                  className="reply__likes"
+                  justify="center"
+                  align="center"
+                >
+                  <AiOutlineHeart className="heart__icon" />
+                  <p className="like__count">{commentLikes}</p>
+                </Wrapper>
+              </Wrapper>
+            )
+          )}
         </Wrapper>
       </Wrapper>
     </StyledTweet>
