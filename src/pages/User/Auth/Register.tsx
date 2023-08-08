@@ -2,23 +2,24 @@ import { useState } from "react";
 import {
   FormControl,
   FormLabel,
-  FormErrorMessage,
   Input,
   InputGroup,
   InputLeftAddon,
   Button,
   InputRightElement,
 } from "@chakra-ui/react";
-import {CiLogin} from "react-icons/ci"
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import StyledAuth from "./style";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const [isShowedPassword, setIsShowedPassword] = useState<boolean>(false);
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
 
-  const isBtnDisabled = [username, password].every(Boolean);
+  const isBtnDisabled = [username, password, name, email].every(Boolean);
 
   console.log(isBtnDisabled);
 
@@ -28,8 +29,28 @@ const Register = () => {
 
   return (
     <StyledAuth>
-      <FormControl className="register__form" onSubmit={handleLogin}>
-        <h1 className="form__title">Login</h1>
+      <FormControl className="register__form" onSubmit={handleLogin} isRequired>
+        <h1 className="form__title">Ro'yhatdan o'tish</h1>
+        <FormLabel className="form__label">Ismingiz</FormLabel>
+        <Input
+          type="text"
+          className="form__input"
+          required
+          id="name"
+          value={name}
+          onChange={({ target }) => setName(target.value)}
+          placeholder="Ismingizni kiriting"
+        />
+        <FormLabel className="form__label">Email</FormLabel>
+        <Input
+          type="email"
+          className="form__input"
+          required
+          value={email}
+          onChange={({ target }) => setEmail(target.value)}
+          id="email"
+          placeholder="Elektron pochta manzilni kiriting"
+        />
         <FormLabel className="form__label">Username</FormLabel>
         <InputGroup>
           <InputLeftAddon
@@ -43,10 +64,10 @@ const Register = () => {
             required
             value={username}
             onChange={({ target }) => setUsername(target.value)}
-            placeholder="Enter your username"
+            placeholder="Usernameni kiriting"
           />
         </InputGroup>
-        <FormLabel className="form__label">Password</FormLabel>
+        <FormLabel className="form__label">Paroli</FormLabel>
         <InputGroup>
           <Input
             type={isShowedPassword ? "text" : "password"}
@@ -55,7 +76,7 @@ const Register = () => {
             id="password"
             value={password}
             onChange={({ target }) => setPassword(target.value)}
-            placeholder="Enter your password"
+            placeholder="Parolingizni kiriting"
           />
           <InputRightElement paddingRight="1">
             <Button
@@ -69,13 +90,17 @@ const Register = () => {
         </InputGroup>
 
         <Button
+          type="submit"
           colorScheme="twitter"
           className="submit__btn"
           disabled={!isBtnDisabled}
-          rightIcon={<CiLogin />}
         >
-          Login
+          Hisob yarating
         </Button>
+
+        <p className="route__link">
+          Hisobingiz bormi? <Link to="/">Tizimga kirish</Link>
+        </p>
       </FormControl>
     </StyledAuth>
   );
