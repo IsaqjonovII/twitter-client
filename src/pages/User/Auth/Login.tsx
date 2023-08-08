@@ -1,9 +1,14 @@
+import { Link } from "react-router-dom";
+import StyledAuth from "./style";
 
 
 const Login = () => {
   return (
-    <div>Login</div>
-  )
-}
+    <StyledAuth>
+      Login
+      <Link to="/register">Register an account</Link>
+    </StyledAuth>
+  );
+};
 
-export default Login
+export default Login;

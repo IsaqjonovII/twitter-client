@@ -12,8 +12,23 @@ import {
 } from "../assets";
 import TWeetInfo from "../pages/Home/Tweet";
 import Home from "../pages/Home";
+import Login from "../pages/User/Auth/Login";
+import Register from "../pages/User/Auth/Register";
 
-const routes: IAppRoutes[] = [
+export const publicRoutes: IAppRoutes[] = [
+  {
+    key: 0,
+    path: HOME,
+    Component: Login,
+  },
+  {
+    key: 1,
+    path: "/register",
+    Component: Register,
+  }
+]
+
+const privateRoutes: IAppRoutes[] = [
   {
     key: 0,
     path: HOME,
@@ -64,4 +79,4 @@ export const sidebarRoutes: ISidebarRoutes[] = [
   },
 ];
 
-export default routes;
+export default privateRoutes;
