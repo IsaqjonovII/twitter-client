@@ -18,7 +18,17 @@ export const twitterApi = createApi({
         body: userData,
       }),
     }),
+    getUserInfo: builder.query({
+      query: (userToken) => ({
+        url: "/user-info",
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      }),
+    }),
   }),
 });
 
-export const { useSignInMutation, useSignUpMutation } = twitterApi;
+export const { useSignInMutation, useSignUpMutation, useGetUserInfoQuery } =
+  twitterApi;
