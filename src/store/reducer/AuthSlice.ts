@@ -6,7 +6,7 @@ interface IState {
   user: IUser | null;
 }
 const initialState: IState = {
-  token: "",
+  token: localStorage.getItem("token") ||  "",
   user: null,
 };
 
@@ -15,7 +15,9 @@ export const auth = createSlice({
   initialState,
   reducers: {
     signin(state, action) {
-      state.token = action.payload?.token;
+      console.log(action);
+      
+      state.token = action.payload?.data.token;
       state.user = action.payload?.user;
     },
     signout(state) {

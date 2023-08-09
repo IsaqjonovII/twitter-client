@@ -1,16 +1,17 @@
-import Sidebar from "./components/Sidebar";
-import { GlobalStyles } from "./styles";
 import { Routes, Route } from "react-router-dom";
+import Sidebar from "./components/Sidebar";
 import privateRoutes, { publicRoutes } from "./routes";
 import { useAppSelector } from "./hooks";
+import { GlobalStyles } from "./styles";
 
 function App() {
-  const user = useAppSelector((state) => state.auth.user);
+  const token = useAppSelector((state) => state.auth.token);
+
   return (
     <div>
       <GlobalStyles />
       <div className="app__container">
-        {user ? (
+        {token ? (
           <Sidebar>
             <Routes>
               {privateRoutes.map(({ key, path, Component }) => (
