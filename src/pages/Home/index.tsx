@@ -7,6 +7,7 @@ import { AiOutlineHeart, commentIcon } from "../../assets";
 import PageTitle from "../../components/Title";
 
 const Home = () => {
+
   return (
     <StyledHome>
       <PageTitle>Home</PageTitle>

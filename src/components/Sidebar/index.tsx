@@ -4,12 +4,15 @@ import { twitterLogo } from "../../assets";
 import { sidebarRoutes } from "../../routes";
 import Wrapper from "../../components/Wrapper";
 import StyledSidebar from "./style";
+import { useAppSelector } from "../../hooks";
 
 interface ISidebar {
   children: React.JSX.Element | React.JSX.Element[] | any;
 }
 
 const Sidebar = ({ children }: ISidebar) => {
+  const username = useAppSelector((state) => state.auth.user?.username);
+
   return (
     <StyledSidebar>
       <div className="sidebar">
@@ -20,7 +23,7 @@ const Sidebar = ({ children }: ISidebar) => {
         </Wrapper>
         <Wrapper className="sidebar__links">
           {sidebarRoutes.map(({ key, path, title, Icon }) => (
-            <Link to={path} key={key}>
+            <Link to={path === "/profile/" ? path + username : path} key={key}>
               <Wrapper className="sidebar__link" flex="flex" align="center">
                 <Icon className="icon" />
                 <span>{title}</span>

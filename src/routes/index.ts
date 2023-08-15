@@ -2,6 +2,7 @@ import { HOME, NOTIFICATIONS, PROFILE, SETTINGS, TWEET } from "../constants";
 import { IAppRoutes, ISidebarRoutes } from "../interfaces";
 import Notifications from "../pages/Notifications";
 import Profile from "../pages/User/Profile";
+
 import {
   RiHome7Fill,
   RiHome7Line,
@@ -15,6 +16,7 @@ import Home from "../pages/Home";
 import Login from "../pages/User/Auth/Login";
 import Register from "../pages/User/Auth/Register";
 
+ 
 export const publicRoutes: IAppRoutes[] = [
   {
     key: 0,
@@ -36,7 +38,7 @@ const privateRoutes: IAppRoutes[] = [
   },
   {
     key: 1,
-    path: PROFILE,
+    path: PROFILE + ":username",
     Component: Profile,
   },
   {

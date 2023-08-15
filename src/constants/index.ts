@@ -1,6 +1,6 @@
 const APP_ROUTES = {
   HOME: "/",
-  PROFILE: "/profile",
+  PROFILE: "/profile/",
   LOGIN: "/login",
   REGISTER: "/register",
   NOTIFICATIONS: "/notifications",

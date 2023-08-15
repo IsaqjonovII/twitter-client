@@ -1,17 +1,29 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import PageTitle from "../../../components/Title";
 import { useGetUserInfoQuery } from "../../../service";
 import { signout } from "../../../store/reducer/AuthSlice";
-import { useAppDispatch, useAppSelector } from "../../../hooks";
-
+import { useAppDispatch } from "../../../hooks";
+type TUsername = {
+  username?: string | any;
+};
 const Profile = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const token = useAppSelector((state) => state.auth.token);
-  const { data, isLoading, error } = useGetUserInfoQuery(token);
+  const { username }: TUsername = useParams();
+  const { data, error, isLoading } = useGetUserInfoQuery(username);
 
-  console.log(data);
+  useEffect(() => {
+    if (data && !isLoading) {
+      console.log(data);
+    }
+  }, [data]);
+
+  useEffect(() => {
+    if (error) {
+      console.log(error);
+    }
+  }, [error]);
 
   const handleSignOut = () => {
     dispatch(signout());

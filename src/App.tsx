@@ -3,6 +3,7 @@ import Sidebar from "./components/Sidebar";
 import privateRoutes, { publicRoutes } from "./routes";
 import { useAppSelector } from "./hooks";
 import { GlobalStyles } from "./styles";
+import Login from "./pages/User/Auth/Login";
 
 function App() {
   const token = useAppSelector((state) => state.auth.token);

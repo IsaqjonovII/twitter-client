@@ -18,7 +18,7 @@ export const auth = createSlice({
       console.log(action);
       
       state.token = action.payload?.data.token;
-      state.user = action.payload?.user;
+      state.user = action.payload?.data.user;
     },
     signout(state) {
       state.token = "";

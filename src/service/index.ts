@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { IUser } from "../interfaces";
 
 export const twitterApi = createApi({
   reducerPath: "twitterapi",
@@ -18,17 +19,13 @@ export const twitterApi = createApi({
         body: userData,
       }),
     }),
-    getUserInfo: builder.query({
-      query: (userToken) => ({
-        url: "/user-info",
+    getUserInfo: builder.query<IUser, string>({
+      query: (username) => ({
+        url: `/user-info/${encodeURIComponent(username)}`,
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${userToken}`,
-        },
       }),
     }),
   }),
 });
 
-export const { useSignInMutation, useSignUpMutation, useGetUserInfoQuery } =
-  twitterApi;
+export const { useSignInMutation, useSignUpMutation, useGetUserInfoQuery } = twitterApi;
