@@ -40,23 +40,26 @@ const Register = () => {
     try {
       const response = await signUp(formData);
       if ("data" in response) {
+        const responseData = response.data;
         toast({
           title: "Muvaffaqiyatli hisob yaratildi",
           status: "success",
           position: "top-right",
           isClosable: true,
         });
-        dispatch(signin(response));
-        navigate("/")
+        dispatch(signin(responseData));
+        navigate("/");
       } else if ("error" in response) {
-        toast({
-          title: response.error.data.error,
-          status: "error",
-          isClosable: true,
-        });
+        console.log(response.error);
+        // toast({
+        //   title: response.error.data.error,
+        //   status: "error",
+        //   isClosable: true,
+        // });
       }
     } catch (error) {
-      console.log("Error:", error?.error?.data);
+      // console.log("Error:", error?.error?.data);
+      console.log(error);
     }
   };
 
