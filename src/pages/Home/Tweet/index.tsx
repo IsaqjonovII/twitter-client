@@ -48,7 +48,7 @@ const TWeetInfo = () => {
           {currentTweet?.likes.count}{" "}
           <span>
             like
-            {currentTweet?.likes.count > 1 ? "s" : null}
+            {currentTweet?.likes && currentTweet?.likes.count > 1 ? "s" : null}
           </span>
         </Wrapper>
         <Wrapper className="tweet__actions__wrp" flex="flex" justify="center">
