@@ -14,11 +14,9 @@ export const auth = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    signin(state, action) {
-      console.log(action);
-      
-      state.token = action.payload?.data.token;
-      state.user = action.payload?.data.user;
+    signin(state, action) {      
+      state.token = action.payload?.token;
+      state.user = action.payload?.user;
     },
     signout(state) {
       state.token = "";

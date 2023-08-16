@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react";
+import { Avatar, Button } from "@chakra-ui/react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-
 import StyledProfile from "./style";
 import { IUser } from "../../../interfaces";
 import { useAppDispatch } from "../../../hooks";
 import PageTitle from "../../../components/Title";
+import Wrapper from "../../../components/Wrapper";
 import { useGetUserInfoQuery } from "../../../service";
 import { signout } from "../../../store/reducer/AuthSlice";
+import { IoLocationOutline, IoCalendarOutline } from "../../../assets";
 
 type TUsername = {
   username?: string | any;
 };
+
 const Profile = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -20,7 +23,7 @@ const Profile = () => {
 
   useEffect(() => {
     if (data && !isLoading) {
-      setUserData(data);
+      setUserData(data?.data);
     }
   }, [data, isLoading]);
 
@@ -31,8 +34,10 @@ const Profile = () => {
   }, [error]);
 
   const handleSignOut = () => {
-    dispatch(signout());
-    navigate("/");
+    if (confirm("Are you sure to sign out?")) {
+      dispatch(signout());
+      navigate("/");
+    }
   };
   return (
     <StyledProfile>
@@ -44,9 +49,37 @@ const Profile = () => {
           {userData?.name} <br />
           <p className="user__tweets__indicator">9 tweets</p>
         </div>
+        <button className="signout__btn" onClick={handleSignOut}>
+          Sign out
+        </button>
       </PageTitle>
-
-      <button onClick={handleSignOut}>Sign out</button>
+      <Wrapper className="profile__content">
+        <Wrapper
+          className="profile__avatar"
+          flex="flex"
+          justify="space-between"
+          align="flex-end"
+        >
+          <Avatar
+            name="Dan Abrahmov"
+            size="xl"
+            src="https://bit.ly/dan-abramov"
+          />
+          <button className="edit__btn">Edit profile</button>
+        </Wrapper>
+        <Wrapper className="profile__name">{userData?.name}</Wrapper>
+        <Wrapper className="profile__username">@{userData?.username}</Wrapper>
+        <Wrapper className="profile__bio">Bio.txt</Wrapper>
+        <Wrapper flex="flex">
+          <Wrapper className="profile__location" flex="flex" align="center">
+            {" "}
+            <IoLocationOutline /> Location of user
+          </Wrapper>
+          <Wrapper flex="flex" align="center" className="profile__location">
+            <IoCalendarOutline /> Joined at August 2022
+          </Wrapper>
+        </Wrapper>
+      </Wrapper>
     </StyledProfile>
   );
 };

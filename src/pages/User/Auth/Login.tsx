@@ -35,7 +35,7 @@ const Login = () => {
       if ("data" in response) {
         const responseData = response.data;
         toast({
-          title: "Muvaffaqiyatli tizimga kirildi",
+          title: "Tizimga muvaffaqiyatli kirildi",
           status: "success",
           position: "top-right",
           isClosable: true,

@@ -3,7 +3,7 @@ import { IUser } from "../interfaces";
 
 export const twitterApi = createApi({
   reducerPath: "twitterapi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:2999" }),
+  baseQuery: fetchBaseQuery({ baseUrl: "https://twitter-server-dy4c.onrender.com" }),
   endpoints: (builder) => ({
     signUp: builder.mutation({
       query: (credentials) => ({

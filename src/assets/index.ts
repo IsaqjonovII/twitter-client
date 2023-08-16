@@ -3,6 +3,7 @@ import commentIcon from "./commentIcon.svg";
 import { AiOutlineHeart } from "react-icons/ai";
 import { RiHome7Line, RiHome7Fill } from "react-icons/ri";
 import { HiDotsVertical } from "react-icons/hi";
+import { IoLocationOutline, IoCalendarOutline } from "react-icons/io5";
 import { FaRegBell, FaBell, FaUser, FaRegUser } from "react-icons/fa";
 
 export {
@@ -15,5 +16,7 @@ export {
   FaRegBell,
   FaUser,
   FaRegUser,
-  HiDotsVertical
+  HiDotsVertical,
+  IoLocationOutline,
+  IoCalendarOutline,
 };

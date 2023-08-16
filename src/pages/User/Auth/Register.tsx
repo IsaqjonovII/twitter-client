@@ -42,11 +42,13 @@ const Register = () => {
       if ("data" in response) {
         const responseData = response.data;
         toast({
-          title: "Muvaffaqiyatli hisob yaratildi",
+          title: "Hisob muvaffaqiyatli yaratildi",
           status: "success",
           position: "top-right",
           isClosable: true,
         });
+        console.log(responseData);
+        
         dispatch(signin(responseData));
         navigate("/");
       } else if ("error" in response) {
