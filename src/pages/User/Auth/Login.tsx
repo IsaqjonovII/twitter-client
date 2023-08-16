@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { CiLogin } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
@@ -21,7 +21,6 @@ const Login = () => {
   const toast = useToast();
   const dispatch = useAppDispatch();
   const [signIn] = useSignInMutation();
-  const [userToken, setUserToken] = useState<string | null>(null);
   const [isShowedPassword, setIsShowedPassword] = useState<boolean>(false);
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -34,8 +33,6 @@ const Login = () => {
     try {
       const response = await signIn(userData);
       if ("data" in response) {
-        const token: string = response.data.token;
-        setUserToken(token);
         toast({
           title: "Muvaffaqiyatli tizimga kirildi",
           status: "success",

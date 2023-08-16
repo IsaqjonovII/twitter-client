@@ -2,6 +2,7 @@ import twitterLogo from "./twitterLogo.svg";
 import commentIcon from "./commentIcon.svg";
 import { AiOutlineHeart } from "react-icons/ai";
 import { RiHome7Line, RiHome7Fill } from "react-icons/ri";
+import { HiDotsVertical } from "react-icons/hi";
 import { FaRegBell, FaBell, FaUser, FaRegUser } from "react-icons/fa";
 
 export {
@@ -14,4 +15,5 @@ export {
   FaRegBell,
   FaUser,
   FaRegUser,
+  HiDotsVertical
 };

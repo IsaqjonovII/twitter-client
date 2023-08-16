@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+
 import StyledProfile from "./style";
 import { IUser } from "../../../interfaces";
 import { useAppDispatch } from "../../../hooks";
@@ -39,7 +40,7 @@ const Profile = () => {
         <Link to="/" className="back__icon">
           {"<-"}
         </Link>{" "}
-        <div>
+        <div className="user__name">
           {userData?.name} <br />
           <p className="user__tweets__indicator">9 tweets</p>
         </div>
