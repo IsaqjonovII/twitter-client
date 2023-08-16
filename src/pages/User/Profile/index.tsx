@@ -20,9 +20,9 @@ const Profile = () => {
 
   useEffect(() => {
     if (data && !isLoading) {
-      setUserData(data.data);
+      setUserData(data);
     }
-  }, [data]);
+  }, [data, isLoading]);
 
   useEffect(() => {
     if (error) {

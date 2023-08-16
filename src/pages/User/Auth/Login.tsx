@@ -33,20 +33,23 @@ const Login = () => {
     try {
       const response = await signIn(userData);
       if ("data" in response) {
+        const responseData = response.data;
         toast({
           title: "Muvaffaqiyatli tizimga kirildi",
           status: "success",
           position: "top-right",
           isClosable: true,
         });
-        dispatch(signin(response));
-        console.log(response);
+        dispatch(signin(responseData));
+        console.log(responseData);
       } else if ("error" in response) {
-        toast({
-          title: response.error.data.error,
-          status: "error",
-          isClosable: true,
-        });
+        console.log(response.error);
+
+        // toast({
+        //   title: response.error,
+        //   status: "error",
+        //   isClosable: true,
+        // });
       }
     } catch (error) {
       console.log(error);
