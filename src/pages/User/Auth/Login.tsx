@@ -32,6 +32,7 @@ const Login = () => {
     const userData = { username: username.toLowerCase().trim(), password };
     try {
       const response = await signIn(userData);
+      console.log(response);
       if ("data" in response) {
         const responseData = response.data;
         toast({
@@ -40,8 +41,7 @@ const Login = () => {
           position: "top-right",
           isClosable: true,
         });
-        dispatch(signin(responseData));
-        console.log(responseData);
+        // dispatch(signin(responseData));
       } else if ("error" in response) {
         console.log(response.error);
 

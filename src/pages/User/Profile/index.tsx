@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Avatar, Button } from "@chakra-ui/react";
+import { Avatar } from "@chakra-ui/react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import StyledProfile from "./style";
 import { IUser } from "../../../interfaces";

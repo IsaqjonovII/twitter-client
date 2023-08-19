@@ -1,17 +1,18 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { ITweet } from "../interfaces";
 
 export const tweetApi = createApi({
   reducerPath: "tweetapi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://twitter-server-dy4c.onrender.com",
+    // baseUrl: "https://twitter-server-dy4c.onrender.com",
+    baseUrl: "http://localhost:2999",
   }),
   endpoints: (builder) => ({
     postTweet: builder.mutation({
-      query: (content: string) => ({
+      query: (data) => ({
         url: "/tweet",
         method: "POST",
-        body: { content },
+        body: data,
         headers: {
           "Content-Type": "application/json",
         },
@@ -24,11 +25,15 @@ export const tweetApi = createApi({
       }),
     }),
     getAllTweets: builder.query<ITweet[], void>({
-        query: () => ({
-            url: "/tweets",
-            method: "GET",
-        }),
-        transformResponse: (response) => response.data
+      query: () => ({
+        url: "/tweets-all",
+        method: "GET",
+      }),
     }),
   }),
 });
+export const {
+  usePostTweetMutation,
+  useLikeTweetMutation,
+  useGetAllTweetsQuery,
+} = tweetApi;

@@ -11,10 +11,11 @@ export interface ISidebarRoutes {
   isActiveIcon?: JSX.Element | any;
 }
 export interface IUser {
-  userId: string | number;
+  _id: string;
   username: string;
   name: string;
   email: string;
+  joinedAt?: Date;
 }
 
 export interface ITweet {
