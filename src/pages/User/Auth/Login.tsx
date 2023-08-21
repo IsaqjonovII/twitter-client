@@ -41,7 +41,9 @@ const Login = () => {
           position: "top-right",
           isClosable: true,
         });
-        // dispatch(signin(responseData));
+        console.log(responseData);
+        
+        dispatch(signin(responseData));
       } else if ("error" in response) {
         console.log(response.error);
 

@@ -19,8 +19,8 @@ export interface IUser {
 }
 
 export interface ITweet {
-  id: string | number;
-  path: string;
+  _id: string;
+  path?: string;
   publishedAt: string | Date;
   content: string;
   likes: {
@@ -35,7 +35,9 @@ export interface ITweet {
       commentDate: string | Date;
       commentLikes: number;
     }[];
+    commentsCount: number | string;
   };
+  tweetedUser: string;
 }
 export interface ISignUp {
   name: string;
