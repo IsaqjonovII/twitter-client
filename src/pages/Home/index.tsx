@@ -57,8 +57,6 @@ const Home = () => {
     }
   }, [error]);
 
-  console.log(tweets);
-
   return (
     <StyledHome>
       <PageTitle>Home</PageTitle>
