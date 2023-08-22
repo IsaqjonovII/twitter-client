@@ -6,7 +6,10 @@ import { useAppSelector } from "../../hooks";
 import Wrapper from "../../components/Wrapper";
 import PageTitle from "../../components/Title";
 import { AiOutlineHeart, commentIcon } from "../../assets";
-import { usePostTweetMutation } from "../../service/tweets";
+import {
+  useGetAllTweetsQuery,
+  usePostTweetMutation,
+} from "../../service/tweets";
 import { ITweet } from "interfaces";
 
 const Home = () => {
@@ -15,20 +18,18 @@ const Home = () => {
   const [tweets, setTWeets] = useState<ITweet[]>([]);
   const user = useAppSelector((state) => state.auth.user);
   const [postTweet, { data, isLoading, error }] = usePostTweetMutation();
-  const handleGetAllTweets = async () => {
-    await fetch("http://localhost:2999/tweets-all", {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setTWeets(data.tweets);
-      })
-      .catch((err) => console.log(err));
-  };
+
+  const {
+    data: tweetsData,
+    isLoading: isTweetsLoading,
+    error: tweetsError,
+  } = useGetAllTweetsQuery();
 
   useEffect(() => {
-    handleGetAllTweets();
-  }, []);
+    if (tweetsData && !isTweetsLoading) {
+      setTWeets(tweetsData.tweets);
+    }
+  }, [tweetsData, isTweetsLoading]);
 
   const handleTweet = (e: any) => {
     e.preventDefault();
@@ -52,10 +53,11 @@ const Home = () => {
   }, [data, isLoading]);
 
   useEffect(() => {
-    if (error) {
+    if (error || tweetsError) {
       console.log(error);
+      console.log(tweetsError);
     }
-  }, [error]);
+  }, [error, tweetsError]);
 
   return (
     <StyledHome>
