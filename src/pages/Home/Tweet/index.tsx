@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import PageTitle from "../../../components/Title";
 import StyledTweet from "./style";
 import Wrapper from "../../../components/Wrapper";
-import { tweets } from "../../../mocks";
 import { ITweet } from "../../../interfaces";
 import { Avatar, Textarea } from "@chakra-ui/react";
 import { AiOutlineHeart, commentIcon } from "../../../assets";
@@ -15,12 +14,8 @@ const TWeetInfo = () => {
   const { id } = useParams<paramsID>();
   const navigate = useNavigate();
   const [currentTweet, setCurrentTweet] = useState<ITweet | null>(null);
-  useEffect(() => {
-    const filteredTweet = tweets.filter((tweet) => tweet.id == id);
-    setCurrentTweet(filteredTweet[0]);
-  }, [id]);
 
-  console.log(currentTweet);
+  console.log(id);
 
   return (
     <StyledTweet>

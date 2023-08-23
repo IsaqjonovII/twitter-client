@@ -15,7 +15,7 @@ import { ITweet } from "interfaces";
 const Home = () => {
   const toast = useToast();
   const [tweetContent, setTweetContent] = useState<string>("");
-  const [tweets, setTWeets] = useState<ITweet[]>([]);
+  const [tweets, setTWeets] = useState<ITweet[] | null>([]);
   const user = useAppSelector((state) => state.auth.user);
   const [postTweet, { data, isLoading, error }] = usePostTweetMutation();
 
@@ -84,7 +84,7 @@ const Home = () => {
         </form>
       </Wrapper>
       <Wrapper className="tweets__wrp" direction="column">
-        {tweets.length ? null : (
+        {tweets?.length ? null : (
           <Spinner
             display="block"
             margin="auto"

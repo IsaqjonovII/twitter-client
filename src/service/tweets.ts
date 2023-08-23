@@ -1,6 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { ITweet } from "../interfaces";
 
+interface TweetsData {
+  tweets: ITweet[];
+}
+
 export const tweetApi = createApi({
   reducerPath: "tweetapi",
   baseQuery: fetchBaseQuery({
@@ -24,7 +28,7 @@ export const tweetApi = createApi({
         method: "POST",
       }),
     }),
-    getAllTweets: builder.query<ITweet[], void>({
+    getAllTweets: builder.query<TweetsData, void>({
       query: () => ({
         url: "/tweets-all",
         method: "GET",
