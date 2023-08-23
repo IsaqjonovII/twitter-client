@@ -6,8 +6,6 @@ function getRandomDate(start: Date, end: Date): Date {
     start.getTime() + Math.random() * (end.getTime() - start.getTime())
   );
 }
-
-// Generate a random user
 function generateRandomUser(_id: string): IUser {
   const names = [
     "299",
@@ -24,9 +22,7 @@ function generateRandomUser(_id: string): IUser {
     "user4@example.com",
     "user5@example.com",
   ];
-
   const randomIndex = Math.floor(Math.random() * names.length);
-
   return {
     _id,
     name: names[randomIndex],
