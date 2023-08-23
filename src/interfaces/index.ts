@@ -8,7 +8,7 @@ export interface ISidebarRoutes {
   key: string | number;
   title: string;
   Icon?: JSX.Element | any;
-  isActiveIcon?: JSX.Element | any;
+  ActiveIcon?: JSX.Element | any;
 }
 export interface IUser {
   _id: string;

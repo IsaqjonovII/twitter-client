@@ -15,6 +15,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSignUpMutation } from "../../../service";
 import { useAppDispatch } from "../../../hooks";
 import { signin } from "../../../store/reducer/AuthSlice";
+import { HOME } from "../../../constants";
 
 const Register = () => {
   const toast = useToast();
@@ -48,9 +49,9 @@ const Register = () => {
           isClosable: true,
         });
         console.log(responseData);
-        
+
         dispatch(signin(responseData));
-        navigate("/");
+        navigate(HOME);
       } else if ("error" in response) {
         console.log(response.error);
         // toast({

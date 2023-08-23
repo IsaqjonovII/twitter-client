@@ -1,9 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import StyledSidebar from "./style";
 import { twitterLogo } from "../../assets";
 import { sidebarRoutes } from "../../routes";
 import Wrapper from "../../components/Wrapper";
-import StyledSidebar from "./style";
 import { useAppSelector } from "../../hooks";
 
 interface ISidebar {
@@ -11,6 +11,7 @@ interface ISidebar {
 }
 
 const Sidebar = ({ children }: ISidebar) => {
+  const { pathname } = useLocation();
   const username = useAppSelector((state) => state.auth.user?.username);
 
   return (
@@ -22,13 +23,20 @@ const Sidebar = ({ children }: ISidebar) => {
           </Link>
         </Wrapper>
         <Wrapper className="sidebar__links">
-          {sidebarRoutes.map(({ key, path, title, Icon }) => (
-            <Link to={path === "/profile/" ? path + username : path} key={key}>
+          {sidebarRoutes.map(({ key, path, title, Icon, ActiveIcon }) => (
+            <NavLink
+              to={title.includes("Profile") ? path + username : path}
+              key={key}
+            >
               <Wrapper className="sidebar__link" flex="flex" align="center">
-                <Icon className="icon" />
+                {path === pathname || title.includes("Profile") ? (
+                  <ActiveIcon className="icon" />
+                ) : (
+                  <Icon className="icon" />
+                )}
                 <span>{title}</span>
               </Wrapper>
-            </Link>
+            </NavLink>
           ))}
         </Wrapper>
       </div>

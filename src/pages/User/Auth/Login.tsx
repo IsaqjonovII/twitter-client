@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { CiLogin } from "react-icons/ci";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import {
   FormControl,
@@ -16,9 +16,11 @@ import StyledAuth from "./style";
 import { useSignInMutation } from "../../../service";
 import { signin } from "../../../store/reducer/AuthSlice";
 import { useAppDispatch } from "../../../hooks";
+import { HOME } from "../../../constants";
 
 const Login = () => {
   const toast = useToast();
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [signIn] = useSignInMutation();
   const [isShowedPassword, setIsShowedPassword] = useState<boolean>(false);
@@ -41,12 +43,10 @@ const Login = () => {
           position: "top-right",
           isClosable: true,
         });
-        console.log(responseData);
-        
         dispatch(signin(responseData));
+        navigate(HOME);
       } else if ("error" in response) {
         console.log(response.error);
-
         // toast({
         //   title: response.error,
         //   status: "error",

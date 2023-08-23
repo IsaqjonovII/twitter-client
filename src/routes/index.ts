@@ -1,4 +1,4 @@
-import { HOME, NOTIFICATIONS, PROFILE, SETTINGS, TWEET } from "../constants";
+import { HOME, LOGIN, NOTIFICATIONS, PROFILE, SETTINGS, TWEET } from "../constants";
 import { IAppRoutes, ISidebarRoutes } from "../interfaces";
 import Notifications from "../pages/Notifications";
 import Profile from "../pages/User/Profile";
@@ -16,19 +16,18 @@ import Home from "../pages/Home";
 import Login from "../pages/User/Auth/Login";
 import Register from "../pages/User/Auth/Register";
 
- 
 export const publicRoutes: IAppRoutes[] = [
   {
     key: 0,
-    path: HOME,
+    path: LOGIN,
     Component: Login,
   },
   {
     key: 1,
     path: "/register",
     Component: Register,
-  }
-]
+  },
+];
 
 const privateRoutes: IAppRoutes[] = [
   {
@@ -63,21 +62,21 @@ export const sidebarRoutes: ISidebarRoutes[] = [
     path: HOME,
     title: "Home",
     Icon: RiHome7Line,
-    isActiveIcon: RiHome7Fill,
+    ActiveIcon: RiHome7Fill,
   },
   {
     key: 1,
     path: NOTIFICATIONS,
     title: "Notifications",
     Icon: FaRegBell,
-    isActiveIcon: FaBell,
+    ActiveIcon: FaBell,
   },
   {
     key: 2,
     path: PROFILE,
     title: "Profile",
     Icon: FaRegUser,
-    isActiveIcon: FaUser,
+    ActiveIcon: FaUser,
   },
 ];
 

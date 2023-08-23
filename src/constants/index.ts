@@ -1,12 +1,12 @@
 const APP_ROUTES = {
-  HOME: "/",
-  PROFILE: "/profile/",
-  LOGIN: "/login",
+  HOME: "/home",
+  PROFILE: "/",
+  LOGIN: "/",
   REGISTER: "/register",
   NOTIFICATIONS: "/notifications",
   SEARCH: "/search",
   SETTINGS: "/settings",
-  TWEET: "/status/"
+  TWEET: "/status/",
 };
 
 export enum colors {
@@ -26,5 +26,5 @@ export const {
   SEARCH,
   SETTINGS,
   REGISTER,
-  TWEET
+  TWEET,
 } = APP_ROUTES;
