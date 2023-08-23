@@ -58,6 +58,7 @@ const Home = () => {
       console.log(tweetsError);
     }
   }, [error, tweetsError]);
+  
 
   return (
     <StyledHome>

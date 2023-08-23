@@ -8,8 +8,8 @@ interface UserData {
 export const twitterApi = createApi({
   reducerPath: "twitterapi",
   baseQuery: fetchBaseQuery({
-    // baseUrl: "https://twitter-server-dy4c.onrender.com"
-    baseUrl: "http://localhost:2999",
+    baseUrl: "https://twitter-server-dy4c.onrender.com"
+    // baseUrl: "http://localhost:2999",
   }),
   endpoints: (builder) => ({
     signUp: builder.mutation({

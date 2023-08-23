@@ -34,10 +34,17 @@ export const tweetApi = createApi({
         method: "GET",
       }),
     }),
+    getSingleTweet: builder.query<ITweet, string>({
+      query: (tweetID) => ({
+        url: "/get-tweet-info/" + tweetID,
+        method: "GET",
+      }),
+    }),
   }),
 });
 export const {
   usePostTweetMutation,
   useLikeTweetMutation,
   useGetAllTweetsQuery,
+  useGetSingleTweetQuery,
 } = tweetApi;
