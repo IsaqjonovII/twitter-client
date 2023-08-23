@@ -6,9 +6,7 @@ function getRandomDate(start: Date, end: Date): Date {
     start.getTime() + Math.random() * (end.getTime() - start.getTime())
   );
 }
-
-// Generate a random user
-function generateRandomUser(userId: string): IUser {
+function generateRandomUser(_id: string): IUser {
   const names = [
     "299",
     "Jane Smith",
@@ -24,11 +22,9 @@ function generateRandomUser(userId: string): IUser {
     "user4@example.com",
     "user5@example.com",
   ];
-
   const randomIndex = Math.floor(Math.random() * names.length);
-
   return {
-    userId,
+    _id,
     name: names[randomIndex],
     username: usernames[randomIndex],
     email: emails[randomIndex],
@@ -37,7 +33,8 @@ function generateRandomUser(userId: string): IUser {
 
 // Generate 10 random tweets
 export const tweets: ITweet[] = Array.from({ length: 10 }, (_, index) => ({
-  id: index,
+  _id: index + "",
+  tweetedUser: "asdasd",
   path: `user/profile/status/${index}`,
   content: `Ilhomjon is creating Twitter clone ${index}`,
   publishedAt: getRandomDate(
@@ -65,5 +62,6 @@ export const tweets: ITweet[] = Array.from({ length: 10 }, (_, index) => ({
         commentLikes: Math.floor(Math.random() * 20),
       },
     ],
+    commentsCount: 20,
   },
 }));

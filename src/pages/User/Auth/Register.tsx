@@ -15,6 +15,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSignUpMutation } from "../../../service";
 import { useAppDispatch } from "../../../hooks";
 import { signin } from "../../../store/reducer/AuthSlice";
+import { HOME } from "../../../constants";
 
 const Register = () => {
   const toast = useToast();
@@ -42,13 +43,15 @@ const Register = () => {
       if ("data" in response) {
         const responseData = response.data;
         toast({
-          title: "Muvaffaqiyatli hisob yaratildi",
+          title: "Hisob muvaffaqiyatli yaratildi",
           status: "success",
           position: "top-right",
           isClosable: true,
         });
+        console.log(responseData);
+
         dispatch(signin(responseData));
-        navigate("/");
+        navigate(HOME);
       } else if ("error" in response) {
         console.log(response.error);
         // toast({

@@ -3,6 +3,7 @@ import rootReducer from "./reducer";
 import { twitterApi } from "../service";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import { tweetApi } from "../service/tweets";
 
 const persistConfig = {
   key: "root",
@@ -14,7 +15,8 @@ export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware({ serializableCheck: false }).concat(
-      twitterApi.middleware
+      twitterApi.middleware,
+      tweetApi.middleware
     );
   },
 });

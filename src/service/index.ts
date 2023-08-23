@@ -1,9 +1,16 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { IUser } from "../interfaces";
 
+interface UserData {
+  data: IUser;
+}
+
 export const twitterApi = createApi({
   reducerPath: "twitterapi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:2999" }),
+  baseQuery: fetchBaseQuery({
+    // baseUrl: "https://twitter-server-dy4c.onrender.com"
+    baseUrl: "http://localhost:2999",
+  }),
   endpoints: (builder) => ({
     signUp: builder.mutation({
       query: (credentials) => ({
@@ -19,7 +26,7 @@ export const twitterApi = createApi({
         body: userData,
       }),
     }),
-    getUserInfo: builder.query<IUser, string>({
+    getUserInfo: builder.query<UserData, string>({
       query: (username) => ({
         url: `/user-info/${encodeURIComponent(username)}`,
         method: "GET",
@@ -28,4 +35,5 @@ export const twitterApi = createApi({
   }),
 });
 
-export const { useSignInMutation, useSignUpMutation, useGetUserInfoQuery } = twitterApi;
+export const { useSignInMutation, useSignUpMutation, useGetUserInfoQuery } =
+  twitterApi;

@@ -8,18 +8,19 @@ export interface ISidebarRoutes {
   key: string | number;
   title: string;
   Icon?: JSX.Element | any;
-  isActiveIcon?: JSX.Element | any;
+  ActiveIcon?: JSX.Element | any;
 }
 export interface IUser {
-  userId: string | number;
+  _id: string;
   username: string;
   name: string;
   email: string;
+  joinedAt?: Date;
 }
 
 export interface ITweet {
-  id: string | number;
-  path: string;
+  _id: string;
+  path?: string;
   publishedAt: string | Date;
   content: string;
   likes: {
@@ -34,7 +35,9 @@ export interface ITweet {
       commentDate: string | Date;
       commentLikes: number;
     }[];
+    commentsCount: number | string;
   };
+  tweetedUser: string;
 }
 export interface ISignUp {
   name: string;
