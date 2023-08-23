@@ -1,7 +1,8 @@
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 // import PageTitle from "../../../components/Title";
 import StyledTweet from "./style";
+import { useGetSingleTweetQuery } from "../../../service/tweets";
 // import Wrapper from "../../../components/Wrapper";
 // import { ITweet } from "../../../interfaces";
 // import { Avatar, Textarea } from "@chakra-ui/react";
@@ -12,13 +13,24 @@ type paramsID = {
 };
 const TWeetInfo = () => {
   const { id } = useParams<paramsID>();
+  const { data, isLoading, error } = useGetSingleTweetQuery(id!);
+
+  useEffect(() => {
+    // if (data && !isLoading) {
+    console.log(data);
+    // }
+  }, [data, isLoading]);
+
+  useEffect(() => {
+    if (error) console.log(error);
+  }, [error]);
+
   // const navigate = useNavigate();
   // const [currentTweet, setCurrentTweet] = useState<ITweet | null>(null);
 
-  console.log(id);
-
   return (
     <StyledTweet>
+      <h1>hi</h1>
       {/* <PageTitle>
         <span onClick={() => navigate("/")}>{"<-"}</span> Tweet
       </PageTitle>
