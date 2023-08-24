@@ -30,7 +30,7 @@ const Home = () => {
       setTWeets(tweetsData.tweets);
     }
   }, [tweetsData, isTweetsLoading]);
-
+  
   const handleTweet = (e: any) => {
     e.preventDefault();
     const tweetData = {
