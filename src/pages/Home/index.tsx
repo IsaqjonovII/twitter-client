@@ -52,7 +52,7 @@ const Home = () => {
         title: data.message,
         status: "success",
         position: "top-right",
-        duration: 1000,
+        duration: 800,
       });
     }
   }, [data, isLoading]);
@@ -125,7 +125,7 @@ const Home = () => {
                   justify="center"
                 >
                   <img src={commentIcon} alt="" />
-                  <span>{commentsCount ?? "2"}</span>
+                  <span>{commentsCount ?? null}</span>
                 </Wrapper>
                 <Wrapper
                   className="action__wrp"
