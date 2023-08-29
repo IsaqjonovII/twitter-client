@@ -1,4 +1,11 @@
-import { HOME, LOGIN, NOTIFICATIONS, PROFILE, SETTINGS, TWEET } from "../constants";
+import {
+  HOME,
+  LOGIN,
+  NOTIFICATIONS,
+  PROFILE,
+  SETTINGS,
+  TWEET,
+} from "../constants";
 import { IAppRoutes, ISidebarRoutes } from "../interfaces";
 import Notifications from "../pages/Notifications";
 import Profile from "../pages/User/Profile";
