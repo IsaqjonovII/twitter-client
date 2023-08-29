@@ -39,6 +39,19 @@ export default styled.div`
     }
   }
 
+  .nodata__label {
+    font-size: calc(0.2rem + 1vw);
+    text-align: center;
+    color: ${blue}95;
+  }
+  .reload__btn {
+    padding: 10px;
+    border-radius: 20px;
+    margin: calc(0.1rem + 1vh) auto;
+    background: ${blue};
+    display: block;
+  }
+
   .tweets__wrp {
     height: auto;
 

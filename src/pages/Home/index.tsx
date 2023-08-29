@@ -5,12 +5,13 @@ import StyledHome from "./style";
 import { useAppSelector } from "../../hooks";
 import Wrapper from "../../components/Wrapper";
 import PageTitle from "../../components/Title";
-import { AiOutlineHeart, commentIcon } from "../../assets";
+import { AiOutlineHeart, RxReload, commentIcon } from "../../assets";
 import {
   useGetAllTweetsQuery,
   usePostTweetMutation,
 } from "../../service/tweets";
-import { ITweet } from "interfaces";
+import { ITweet } from "../../interfaces";
+import { reload } from "../../utils";
 
 const Home = () => {
   const toast = useToast();
@@ -89,7 +90,7 @@ const Home = () => {
         </form>
       </Wrapper>
       <Wrapper className="tweets__wrp" direction="column">
-        {tweets?.length ? null : (
+        {isTweetsLoading ? (
           <Spinner
             display="block"
             margin="auto"
@@ -99,6 +100,18 @@ const Home = () => {
             color="blue.500"
             size="xl"
           />
+        ) : null}
+        {!tweets?.length && (
+          <div className="nodata">
+            <div className="nodata__label">Hech qanday tweet topilmadi</div>
+            <div className="nodata__label">
+              {" "}
+              Balkim saytni qayta yuklab ko'rarsiz{" "}
+            </div>
+            <button className="reload__btn" onClick={reload}>
+              <RxReload />
+            </button>
+          </div>
         )}
         {tweets?.map(
           ({ _id, content, likes: { count }, comments: { commentsCount } }) => (

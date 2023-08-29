@@ -39,6 +39,8 @@ const Profile = () => {
       navigate("/");
     }
   };
+  console.log(userData);
+
   return (
     <StyledProfile>
       <PageTitle className="profile__header">
@@ -60,11 +62,7 @@ const Profile = () => {
           justify="space-between"
           align="flex-end"
         >
-          <Avatar
-            name="Dan Abrahmov"
-            size="xl"
-            src="https://bit.ly/dan-abramov"
-          />
+          <Avatar name={userData?.name ?? user?.name} size="xl" />
           <button className="edit__btn">Edit profile</button>
         </Wrapper>
         <Wrapper className="profile__name">
