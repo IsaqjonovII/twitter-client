@@ -15,6 +15,7 @@ export interface IUser {
   username: string;
   name: string;
   email: string;
+  password?: string;
   joinedAt?: Date;
 }
 
@@ -44,4 +45,16 @@ export interface ISignUp {
   email: string;
   username: string;
   password: string;
+}
+export interface IResponse {
+  data?: {
+    token: string;
+    user: IUser;
+  };
+  error?: {
+    data: {
+      error: string;
+    };
+    status: number | string;
+  };
 }

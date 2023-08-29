@@ -26,7 +26,6 @@ const Login = () => {
   const [isShowedPassword, setIsShowedPassword] = useState<boolean>(false);
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-
   const isBtnDisabled = [username, password].every(Boolean);
 
   const handleLogin = async (e: any) => {
@@ -34,24 +33,22 @@ const Login = () => {
     const userData = { username: username.toLowerCase().trim(), password };
     try {
       const response = await signIn(userData);
-      console.log(response);
-      if ("data" in response) {
-        const responseData = response.data;
+      if ("error" in response) {
+        toast({
+          title: "Foydalanuvchi topilmadi yoki parol noto'g'ri",
+          status: "error",
+          isClosable: true,
+        });
+      } else {
         toast({
           title: "Tizimga muvaffaqiyatli kirildi",
           status: "success",
           position: "top-right",
           isClosable: true,
+          duration: 700,
         });
-        dispatch(signin(responseData));
+        dispatch(signin(response.data));
         navigate(HOME);
-      } else if ("error" in response) {
-        console.log(response.error);
-        // toast({
-        //   title: response.error,
-        //   status: "error",
-        //   isClosable: true,
-        // });
       }
     } catch (error) {
       console.log(error);
@@ -102,7 +99,6 @@ const Login = () => {
               </Button>
             </InputRightElement>
           </InputGroup>
-
           <Button
             type="submit"
             colorScheme="twitter"

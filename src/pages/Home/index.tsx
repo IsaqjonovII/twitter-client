@@ -23,6 +23,7 @@ const Home = () => {
     data: tweetsData,
     isLoading: isTweetsLoading,
     error: tweetsError,
+    refetch,
   } = useGetAllTweetsQuery();
 
   useEffect(() => {
@@ -30,8 +31,7 @@ const Home = () => {
       setTWeets(tweetsData.tweets);
     }
   }, [tweetsData, isTweetsLoading]);
-
-  const handleTweet = (e: any) => {
+  const handleTweet = async (e: any) => {
     e.preventDefault();
     const tweetData = {
       tweetedUser: user?._id,
@@ -39,7 +39,12 @@ const Home = () => {
     };
     postTweet(tweetData);
     setTweetContent("");
+    refetch();
   };
+
+  useEffect(() => {
+    refetch();
+  }, []);
 
   useEffect(() => {
     if (data && !isLoading) {
@@ -47,7 +52,7 @@ const Home = () => {
         title: data.message,
         status: "success",
         position: "top-right",
-        duration: 1000,
+        duration: 800,
       });
     }
   }, [data, isLoading]);
@@ -58,7 +63,6 @@ const Home = () => {
       console.log(tweetsError);
     }
   }, [error, tweetsError]);
-  
 
   return (
     <StyledHome>
@@ -121,7 +125,7 @@ const Home = () => {
                   justify="center"
                 >
                   <img src={commentIcon} alt="" />
-                  <span>{commentsCount ?? "2"}</span>
+                  <span>{commentsCount ?? null}</span>
                 </Wrapper>
                 <Wrapper
                   className="action__wrp"
