@@ -8,8 +8,8 @@ interface TweetsData {
 export const tweetApi = createApi({
   reducerPath: "tweetapi",
   baseQuery: fetchBaseQuery({
-    // baseUrl: "https://twitter-server-dy4c.onrender.com",
-    baseUrl: "http://localhost:2999",
+    baseUrl: "https://twitter-server-dy4c.onrender.com",
+    // baseUrl: "http://localhost:2999",
   }),
   endpoints: (builder) => ({
     postTweet: builder.mutation({
