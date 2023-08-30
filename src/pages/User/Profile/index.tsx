@@ -23,7 +23,9 @@ const Profile = () => {
   const { data, error, isLoading } = useGetUserInfoQuery(username);
   useEffect(() => {
     if (data && !isLoading) {
-      setUserData(data?.data);
+      console.log(data);
+      
+      setUserData(data?.user);
     }
   }, [data, isLoading]);
 
@@ -39,7 +41,6 @@ const Profile = () => {
       navigate("/");
     }
   };
-  console.log(userData);
 
   return (
     <StyledProfile>
