@@ -33,6 +33,7 @@ export const tweetApi = createApi({
         url: "/tweets-all",
         method: "GET",
       }),
+      providesTags: [],
     }),
     getSingleTweet: builder.query<ITweet, string>({
       query: (tweetID) => ({
