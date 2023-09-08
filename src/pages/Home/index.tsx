@@ -1,16 +1,17 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Avatar, Spinner, Textarea, useToast } from "@chakra-ui/react";
-import StyledHome from "./style";
-import { useAppSelector } from "../../hooks";
-import Wrapper from "../../components/Wrapper";
-import PageTitle from "../../components/Title";
-import { AiOutlineHeart, commentIcon } from "../../assets";
+import { Spinner, Textarea, useToast } from "@chakra-ui/react";
 import {
   useGetAllTweetsQuery,
   usePostTweetMutation,
 } from "../../service/tweets";
-import { ITweet } from "interfaces";
+import StyledHome from "./style";
+import { reload } from "../../utils";
+import { RxReload } from "../../assets";
+import { ITweet } from "../../interfaces";
+import { useAppSelector } from "../../hooks";
+import Wrapper from "../../components/Wrapper";
+import PageTitle from "../../components/Title";
+import TweetWrp from "../../components/Wrapper/Tweet";
 
 const Home = () => {
   const toast = useToast();
@@ -64,6 +65,8 @@ const Home = () => {
     }
   }, [error, tweetsError]);
 
+  console.log(tweetsData);
+  
   return (
     <StyledHome>
       <PageTitle>Home</PageTitle>
@@ -89,7 +92,7 @@ const Home = () => {
         </form>
       </Wrapper>
       <Wrapper className="tweets__wrp" direction="column">
-        {tweets?.length ? null : (
+        {isTweetsLoading ? (
           <Spinner
             display="block"
             margin="auto"
@@ -99,50 +102,22 @@ const Home = () => {
             color="blue.500"
             size="xl"
           />
+        ) : null}
+        {!tweets?.length && (
+          <div className="nodata">
+            <div className="nodata__label">Hech qanday tweet topilmadi</div>
+            <div className="nodata__label">
+              {" "}
+              Balkim saytni qayta yuklab ko'rarsiz{" "}
+            </div>
+            <button className="reload__btn" onClick={reload}>
+              <RxReload />
+            </button>
+          </div>
         )}
-        {tweets?.map(
-          ({ _id, content, likes: { count }, comments: { commentsCount } }) => (
-            <Wrapper className="feed__tweet__wrp" key={_id}>
-              <Link to={"/status/" + _id}>
-                <Wrapper flex="flex" align="center">
-                  <Avatar
-                    name="Dan Abrahmov"
-                    size="md"
-                    src="https://bit.ly/dan-abramov"
-                  />
-                  <Wrapper className="tweet__content">{content}</Wrapper>
-                </Wrapper>
-              </Link>
-              <Wrapper
-                className="tweet__actions__wrp"
-                flex="flex"
-                justify="space-between"
-              >
-                <Wrapper
-                  className="action__wrp"
-                  flex="flex"
-                  align="center"
-                  justify="center"
-                >
-                  <img src={commentIcon} alt="" />
-                  <span>{commentsCount ?? null}</span>
-                </Wrapper>
-                <Wrapper
-                  className="action__wrp"
-                  align="center"
-                  flex="flex"
-                  justify="center"
-                >
-                  <AiOutlineHeart
-                    className="heart__icon"
-                    onClick={() => (count += 1)}
-                  />
-                  <span>{count}</span>
-                </Wrapper>
-              </Wrapper>
-            </Wrapper>
-          )
-        )}
+        {tweets?.map((tweetData) => (
+          <TweetWrp {...tweetData} key={tweetData._id} />
+        ))}
       </Wrapper>
     </StyledHome>
   );

@@ -1,8 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { IResponse, IUser } from "../interfaces";
+import { IResponse, ITweet, IUser } from "../interfaces";
 
 interface UserData {
-  data: IUser;
+  user: IUser;
+  tweets: ITweet[];
 }
 
 type TLoginData = {
