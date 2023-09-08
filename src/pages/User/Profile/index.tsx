@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Avatar } from "@chakra-ui/react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import StyledProfile from "./style";
-import { IUser } from "../../../interfaces";
+import { ITweet, IUser } from "../../../interfaces";
 import { useAppDispatch, useAppSelector } from "../../../hooks";
 import PageTitle from "../../../components/Title";
 import Wrapper from "../../../components/Wrapper";
@@ -20,11 +20,12 @@ const Profile = () => {
   const { username }: TUsername = useParams();
   const user = useAppSelector((state) => state.auth.user);
   const [userData, setUserData] = useState<IUser | null>(null);
+  const [userTweets, setUserTweets] = useState<ITweet[] | null>([]);
   const { data, error, isLoading } = useGetUserInfoQuery(username);
   useEffect(() => {
     if (data && !isLoading) {
       console.log(data);
-      
+      setUserTweets(data?.tweets);
       setUserData(data?.user);
     }
   }, [data, isLoading]);
@@ -42,6 +43,8 @@ const Profile = () => {
     }
   };
 
+  console.log(userTweets);
+
   return (
     <StyledProfile>
       <PageTitle className="profile__header">
@@ -50,7 +53,13 @@ const Profile = () => {
         </Link>{" "}
         <div className="user__name">
           {userData?.name ?? user?.name} <br />
-          <p className="user__tweets__indicator">9 tweets</p>
+          <p className="user__tweets__indicator">
+            {userTweets?.length
+              ? `${userTweets.length} ${
+                  userTweets.length !== 1 ? "tweets" : "tweet"
+                }`
+              : "0 tweet"}
+          </p>
         </div>
         <button className="signout__btn" onClick={handleSignOut}>
           Sign out
